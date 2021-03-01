@@ -1,0 +1,28 @@
+{
+  "name": "team-dashboard",
+  "version": "1.0.0",
+  "description": "Command line application to create and view current staff, their role, and details of position.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShaylaStevenson/team-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShaylaStevenson/team-dashboard/issues"
+  },
+  "homepage": "https://github.com/ShaylaStevenson/team-dashboard#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
