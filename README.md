@@ -1,2 +1,2 @@
-# team-dashboard
-Command line application to store and display information about staff members.
+# team-profile-generator
+Command line application to create and view current staff, their role, and details of position.
