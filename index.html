@@ -80,3 +80,62 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 </body>
 </html>
+<!-- // function to initialize app
+const init = () => {
+        questions().then((data) => {
+            
+            try {                  
+                // const html = generateHTML();
+                console.log(data.name);
+                switch(data.role) {
+                    case 'Employee':
+                        let person = new Employee(name, id, email);
+                        generateCard(person);
+                        break;
+                    case 'Intern':
+                        person = new Intern(name, id, email, school);
+                        generateCard(person);
+                        break;
+                    case 'Engineer':
+                        person = new Engineer(name, id, email, github);
+                        generateCard(person);
+                        break;
+                    case 'Manager':
+                        person = new Manager(name, id, email, officeNumber);
+                        generateCard(person);
+                        break;
+                }
+
+                inquirer.prompt([
+                    {
+                        type: 'confirm',
+                        name: 'addPerson',
+                        message: 'Would you like to add another person?',
+                    }
+                ])
+                // .then((data) => {
+                //     (addPerson) ? init() : generateCardDeck();
+                // })
+
+                // if (data.role.indexOf('Employee') !=-1) {
+                //     const employee = new Employee(name, id, email);
+                //     employee.generateCard();
+                // } else if (data.role.indexOf('Intern') !=-1) {
+                //     const intern = new Intern(name, id, email, school);
+                //     intern.generateCard();
+                // } else if (data.role.indexOf('Engineer') !=-1) {
+                //     const engineer = new Engineer(name, id, email, github);
+                //     engineer.generateCard();
+                // } else {
+                //     const manager = new Manager(name, id, email, officeNumber);
+                //     manager.generateCard();
+                // }
+
+
+                // fs.writeFileSync('index.html', html);
+                // console.log("Successfully created team profile");
+            } catch (error) {
+                console.log(error);
+            }
+        });
+}; -->
