@@ -119,13 +119,13 @@ function generateCard(person) {
     let card = `
         <div class="card bg-info"> 
         <div class="card-header bg-secondary text-light">
-            <h5 class="card-title">${ name}</h5>
-            <h6 class="card-subtitle mb-2">${ role}</h6>
+            <h5 class="card-title">${name}</h5>
+            <h6 class="card-subtitle mb-2">${role}</h6>
         </div>
         <div class="card-body">
-            <p class="card-text"><span class="text-muted">id</span>${ id}</p>
+            <p class="card-text"><span class="text-muted">id</span> ${id}</p>
             <p class="card-text"><span class="text-muted">email</span>
-                <a href="${email}"> ${ email}</a></p>`;
+                <a href="${email}"> ${email}</a></p>`;
 
     switch(role) {
         // if role is employee, return no additional detail
@@ -139,7 +139,7 @@ function generateCard(person) {
         case 'Intern':
             const school = person.getSchool();
             detail = `
-            <p class="card-text"><span class="text-muted">school</span>${ school}</p>
+            <p class="card-text"><span class="text-muted">school</span> ${school}</p>
             </div>
             </div>`;
             card += detail;
@@ -148,7 +148,7 @@ function generateCard(person) {
         case 'Engineer':
             const github = person.getGithub();
             detail = `
-            <p class="card-text"><span class="text-muted">github</span>${ github}</p>
+            <p class="card-text"><span class="text-muted">github</span> ${github}</p>
             </div>
             </div>`;
             card += detail;
@@ -157,7 +157,7 @@ function generateCard(person) {
         case 'Manager':
             const officeNumber = person.officeNumber;
             detail = `
-            <p class="card-text"><span class="text-muted">office</span>${ officeNumber}</p>
+            <p class="card-text"><span class="text-muted">office</span> ${officeNumber}</p>
             </div>
             </div>`;
             card += detail;
@@ -174,7 +174,7 @@ function generateCardDeck() {
 }   
 
 // HTML of document with the card deck added
-function generateHTML() {
+function generateHTML(cardDeck) {
     const html = `
     <!DOCTYPE html>
     <html lang="en">
@@ -207,6 +207,9 @@ function generateHTML() {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     </body>
     </html>`;
+
+    fs.writeFileSync('index.html', html);
+    console.log("Successfully created team profile");
 }   
     
 // run it!
