@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/employee');
+// const Employee = require('./lib/employee');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -105,46 +105,79 @@ function generateCard(person) {
     const name = person.getName();
     const role = person.getRole();
     const id = person.getId();
-    const email = person.getId();
+    const email = person.getEmail();
 
     // top portion of card with basic employee data
     let card = `
-        <div class="card bg-info"> 
+        <div class="card"> 
         <div class="card-header bg-secondary text-light">
             <h5 class="card-title">${name}</h5>
             <h6 class="card-subtitle mb-2">${role}</h6>
         </div>
         <div class="card-body">
-            <p class="card-text"><span class="text-muted">id</span> ${id}</p>
-            <p class="card-text"><span class="text-muted">email</span>
-                <a href="${email}"> ${email}</a></p>`;
-
+        <div class="row">
+            <div class="col-3">
+            <p class="card-text text-muted">id</p>
+            </div>
+            <div class="col">
+            <p> ${id}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            <p class="card-text text-muted">email</p>
+            </div>
+            <div class="col">
+            <p><a href="${email}"> ${email}</a></p>
+            </div>
+        </div>`;
     switch(role) {
         // if role is intern, return school
         case 'Intern':
             const school = person.getSchool();
             detail = `
-            <p class="card-text"><span class="text-muted">school</span> ${school}</p>
+        <div class="row">
+            <div class="col-3">
+            <p class="card-text text-muted">school</p>
             </div>
-            </div>`;
+            <div class="col">
+            <p> ${school}</p>
+            </div>
+        </div>
+        </div>
+        </div>`;
             card += detail;
             break;
         //if role is engineer, return Github username
         case 'Engineer':
             const github = person.getGithub();
             detail = `
-            <p class="card-text"><span class="text-muted">github</span> ${github}</p>
+        <div class="row">
+            <div class="col-3">
+            <p class="card-text text-muted">github</p>
             </div>
-            </div>`;
+            <div class="col">
+            <p> ${github}</p>
+            </div>
+        </div>
+        </div>
+        </div>`;
             card += detail;
             break;
         //if role is manager, return office number
         case 'Manager':
             const officeNumber = person.officeNumber;
             detail = `
-            <p class="card-text"><span class="text-muted">office</span> ${officeNumber}</p>
+        <div class="row">
+            <div class="col-3">
+            <p class="card-text text-muted">office</p>
             </div>
-            </div>`;
+            <div class="col">
+            <p> ${officeNumber}</p>
+            </div>
+        </div>
+        </div>
+        </div>`;
             card += detail;
             break;
         }
@@ -169,13 +202,13 @@ function generateHTML(cardDeck) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profile</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link href="dist/style.css">
+        <link rel="stylesheet" href="dist/style.css">
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid bg-dark text-light">
             <div class="container">
-            <h1>Team Profile</h1>
-            <p>Success = Interns + Engineers + Managers</p>
+            <h1>Team Dashboard</h1>
+            <p>success = teamwork + effort</p>
             </div>
         </div>
         <!--card deck-->
@@ -192,7 +225,7 @@ function generateHTML(cardDeck) {
     </html>`;
 
     fs.writeFileSync('index.html', html);
-    console.log("Successfully created team profile");
+    console.log('Successfully created team profile');
 }   
     
 // run it!
@@ -207,6 +240,6 @@ inquirer.prompt([
     },
 ])
 .then((data) => {
-    var role = "Manager";
+    var role = 'Manager';
     questions(role);
 })
