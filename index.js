@@ -128,7 +128,7 @@ function generateCard(person) {
             <p class="card-text text-muted">email</p>
             </div>
             <div class="col">
-            <p><a href="${email}"> ${email}</a></p>
+            <p><a target="_blank" href="mailto:${email}"> ${email}</a></p>
             </div>
         </div>`;
     switch(role) {
@@ -157,7 +157,7 @@ function generateCard(person) {
             <p class="card-text text-muted">github</p>
             </div>
             <div class="col">
-            <p> ${github}</p>
+            <p><a target="_blank" href="https://github.com/${github}"> ${github}</a></p>
             </div>
         </div>
         </div>
