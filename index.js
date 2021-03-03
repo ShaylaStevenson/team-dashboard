@@ -4,18 +4,18 @@ const Employee = require('./lib/employee');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-var detail;
-var person;
+
 var cards = []
 
-function questions() {
+// questions() called at end of page. first time asking, role === "Manager".
+function questions(role) {
     inquirer.prompt([
-        // prompts for all entries (Employee)
         {
             type: 'list',
             name: 'role',
             message: 'In which role is the employee?',
-            choices: ['Employee', 'Intern', 'Engineer', 'Manager'],
+            choices: ['Intern', 'Engineer'],
+            when: (data) => role !== 'Manager'
         },
         {
             type: 'input',
@@ -25,34 +25,31 @@ function questions() {
         {
             type: 'number',
             name: 'id',
-            message: 'What is their ID number?',
+            message: 'What is their ID number?'
         },
         {
             type: 'input',
             name: 'email',
-            message: 'What is their email address?',
+            message: 'What is their email address?'
         },
-        // prompt for Intern detail
-        {
-            type: 'input',
-            name: 'school',
-            message: 'What school do they attend?',
-            when: (data) => data.role.indexOf('Intern') !=-1
-        },
-        // prompt for Engineer detail
-        {
-            type: 'input',
-            name: 'github',
-            message: 'What is their Github username?',
-            when: (data) => data.role.indexOf('Engineer') !=-1
-        },
-        // prompt for Manager detail
         {
             type: 'number',
             name: 'officeNumber',
             message: 'What is their office number?',
-            when: (data) => data.role.indexOf('Manager') !=-1
-        }
+            when: (data) => role === 'Manager'
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'What school do they attend?',
+            when: (data) => role !== 'Manager' && data.role.indexOf('Intern') !=-1
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What is their Github username?',
+            when: (data) => role !== 'Manager' && data.role.indexOf('Engineer') !=-1
+        },              
     ])
     .then((data) => {
         try {     
@@ -62,14 +59,10 @@ function questions() {
             const email = data.email;
             const school = data.school;
             const github = data.github;
-            const officeNumber = data.officeNumber;
+            const officeNumber = data.officeNumber;          
 
             // check which role the person is assigned, and generate card using the class constructor
             switch(data.role) {
-                case 'Employee':
-                    person = new Employee(name, id, email);
-                    generateCard(person);
-                    break;
                 case 'Intern':
                     person = new Intern(name, id, email, school);
                     generateCard(person);
@@ -78,7 +71,7 @@ function questions() {
                     person = new Engineer(name, id, email, github);
                     generateCard(person);
                     break;
-                case 'Manager':
+                default:
                     person = new Manager(name, id, email, officeNumber);
                     generateCard(person);
                     break;
@@ -101,11 +94,10 @@ function questions() {
                 } 
             })
         
-        // catch and show the errors
         } catch (error) {
             console.log(error);
         } 
-    })    
+    })  
 }       
 
 // function to generate card with person data
@@ -128,13 +120,6 @@ function generateCard(person) {
                 <a href="${email}"> ${email}</a></p>`;
 
     switch(role) {
-        // if role is employee, return no additional detail
-        case 'Employee':
-            detail = `
-            </div>
-            </div>`;
-            card += detail;
-            break;
         // if role is intern, return school
         case 'Intern':
             const school = person.getSchool();
@@ -196,9 +181,7 @@ function generateHTML(cardDeck) {
         <!--card deck-->
         <div class="container">
             <div class="card-deck">
-
             ${cardDeck}
-
             </div>
         </div>
         <!--links-->
@@ -213,5 +196,17 @@ function generateHTML(cardDeck) {
 }   
     
 // run it!
-questions();
-module.exports = Employee;
+inquirer.prompt([
+    {
+        name: 'greeting',
+        message: 'Welcome to Team Dashboard Builder!',
+    },
+    {
+        name: 'begin',
+        message: "Let's begin by inputing the team manager's information.",
+    },
+])
+.then((data) => {
+    var role = "Manager";
+    questions(role);
+})
