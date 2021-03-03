@@ -116,19 +116,11 @@ function generateCard(person) {
         </div>
         <div class="card-body">
         <div class="row">
-            <div class="col-3">
+            <div class="col">
             <p class="card-text text-muted">id</p>
             </div>
             <div class="col">
             <p> ${id}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
-            <p class="card-text text-muted">email</p>
-            </div>
-            <div class="col">
-            <p><a target="_blank" href="mailto:${email}"> ${email}</a></p>
             </div>
         </div>`;
     switch(role) {
@@ -137,13 +129,16 @@ function generateCard(person) {
             const school = person.getSchool();
             detail = `
         <div class="row">
-            <div class="col-3">
+            <div class="col">
             <p class="card-text text-muted">school</p>
             </div>
             <div class="col">
             <p> ${school}</p>
             </div>
         </div>
+        </div>
+        <div class="card-footer">
+            <p id="email-text"><a target="_blank" href="mailto:${email}"> ${email}</a></p>
         </div>
         </div>`;
             card += detail;
@@ -153,13 +148,16 @@ function generateCard(person) {
             const github = person.getGithub();
             detail = `
         <div class="row">
-            <div class="col-3">
+            <div class="col">
             <p class="card-text text-muted">github</p>
             </div>
             <div class="col">
             <p><a target="_blank" href="https://github.com/${github}"> ${github}</a></p>
             </div>
         </div>
+        </div>
+        <div class="card-footer">
+            <p id="email-text"><a target="_blank" href="mailto:${email}"> ${email}</a></p>
         </div>
         </div>`;
             card += detail;
@@ -169,13 +167,16 @@ function generateCard(person) {
             const officeNumber = person.officeNumber;
             detail = `
         <div class="row">
-            <div class="col-3">
+            <div class="col">
             <p class="card-text text-muted">office</p>
             </div>
             <div class="col">
             <p> ${officeNumber}</p>
             </div>
         </div>
+        </div>
+        <div class="card-footer">
+            <p id="email-text"><a target="_blank" href="mailto:${email}"> ${email}</a></p>
         </div>
         </div>`;
             card += detail;
@@ -200,7 +201,9 @@ function generateHTML(cardDeck) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Team Profile</title>
+        <title>Team Dashboard</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link rel="stylesheet" href="dist/style.css">
     </head>
