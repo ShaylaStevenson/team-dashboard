@@ -1,4 +1,4 @@
-const { it, expect, test } = require("@jest/globals");
+const { it, expect, test, describe } = require("@jest/globals");
 const Employee = require('../lib/Employee');
 
 describe('Employee', () => {
@@ -21,4 +21,40 @@ describe('Employee', () => {
             expect(test.email).toBe('shazzyshay@email.com');
         });     
     });
+
+    describe('getName', () => {
+
+        it('should return the name of the person', () => {
+            const test = new Employee('Shazzy', 711, 'shazzyshay@email.com');
+
+            expect(test.getName()).toBe('Shazzy');
+        });
+    });
+
+    describe('getId', () => {
+
+        it('should return the id of the person', () => {
+            const test = new Employee('Shazzy', 711, 'shazzyshay@email.com');
+
+            expect(test.getId()).toBe(711);
+        });
+    });
+
+    describe('getEmail', () => {
+
+        it('should return the email of the person', () => {
+            const test = new Employee('Shazzy', 711, 'shazzyshay@email.com');
+
+            expect(test.getEmail()).toBe('shazzyshay@email.com');
+        });
+    });
+
+    describe('getRole', () => {
+
+        it('should return the role of the person', () => {
+            const test = new Employee('Shazzy', 711, 'shazzyshay@email.com'); 
+
+            expect(test.getRole()).toBe('Employee');
+        });
+    });    
 });
