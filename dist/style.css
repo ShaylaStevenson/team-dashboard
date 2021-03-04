@@ -2,18 +2,22 @@ body {
     font-family: 'Overpass', sans-serif;
     background-color: black;
 }
+.card-header h5 {
+    font-size: calc(20px + .5vw);
+}
+
+.card-header h6 {
+    font-size: calc(17px + .5vw);
+}
+
 .card-footer,
 .card-body {
     background-color: lightblue;
-    font-size: calc(14 + .25vw);
+    font-size: calc(14px + .5vw);
     color: rgb(8, 8, 8);
 }
 
-.card-text {
-    
-}
-
 #email-text {
-    font-size: calc(12px + .25vw);
+    font-size: calc(12px + .4vw);
 }
 
