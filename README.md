@@ -33,7 +33,7 @@ Once necessary dependencies have been installed:
   
       node index.js
 
-    You will then be greeted with a series of prompts. Upon completion of the prompts, you will be alerted that the your HTML file has been generated. You will find it displayed in the main directory of the application, titled *index.HTML*. Open said file in your browser to see the magic!
+    You will then be greeted with a series of prompts. Upon completion of the prompts, you will be alerted that your HTML file has been generated. You will find it displayed in the main directory of the application, titled *index.HTML*. Open said file in your browser to see the magic!
 
 ## Demo
 To view an example HTML output:
