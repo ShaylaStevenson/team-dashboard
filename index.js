@@ -239,7 +239,7 @@ inquirer.prompt([
     },
     {
         name: 'begin',
-        message: "Let's begin by inputing the team manager's information.",
+        message: "Let's begin by inputting the team manager's information.",
     },
 ])
 .then((data) => {
